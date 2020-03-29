@@ -3,6 +3,7 @@
 * KLART Ljud
 * KLART Animation
 * KLART Chans för att fiende skapas med sköld
+* KLART Fixa versionshantering
 
 * Boss när man får 1000, 2000, 3000 osv poäng
 
