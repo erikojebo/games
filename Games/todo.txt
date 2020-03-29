@@ -1,0 +1,16 @@
+﻿* KLART Game over när fienderna kommer utanför skärmen (längst ner)
+* KLART Slumpa hur fienderna ser ut
+* KLART Ljud
+* KLART Animation
+* KLART Chans för att fiende skapas med sköld
+
+* Boss när man får 1000, 2000, 3000 osv poäng
+
+* Lägg upp spelet på hemsidan
+* Kunna styra med touch
+
+* Paus-knapp
+* Starta om-knapp
+
+
+* Städa bort explosionerna efter att animationen är klar
