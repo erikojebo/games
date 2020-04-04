@@ -44,60 +44,27 @@ function update() {
 
     if (timeSinceLastEnemySpawn > spawnTimeLimit && Math.random() > 0.5) {
 
-        bw.sprites.createAlien();
+        bw.sprites.createAlien(this);
 
         timeSinceLastEnemySpawn = 0;
     }
 
-    let aliens = bw.sprites.aliens;
     let bullets = bw.sprites.bullets;
 
-    aliens.setVelocityY(30);
     bullets.setVelocityY(-1000);
-
-    aliens.children.iterate(function (alien) {
-        if (alien.y > config.height) {
-            gameOver();
-        }
-    });
 }
 
-
-
 function onShipAlienCollission(ship, alien) {
-    bw.sprites.explodeAt(alien.x, alien.y);
+    
     bw.sprites.explodeAt(ship.x, ship.y);
-
-    alien.disableBody(true, true);
     ship.disableBody(true, true);
 
-    gameOver();
+    alien.onHitByShip();
 }
 
 function onAlienHitByLaser(laser, alien) {
 
-    if (alien.anims.currentAnim != null && alien.anims.currentAnim.key === 'sköld') {
-        alien.play("sköld_trasig");
-    } else if (alien.anims.currentAnim != null && alien.anims.currentAnim.key === 'sköld_trasig') {
-        alien.play("ingen_sköld");
-    } else {
-        killAlien(alien);
-    }
+    alien.onHitByLaser();
 
     laser.disableBody(true, true);
-}
-
-function killAlien(alien) {
-
-    alien.disableBody(true, true);
-    
-    bw.hud.scoreBoard.addScore(10);
-
-    bw.sprites.explodeAt(alien.x, alien.y);
-    bw.sounds.explosion.play();
-}
-
-function gameOver() {
-    bw.hud.gameOver();
-    bw.state.isGameOver = true;
 }

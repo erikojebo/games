@@ -22,7 +22,7 @@ bw.sprites.explodeAt = function (x, y) {
     exp.play("explode");
 };
 
-bw.sprites.createAlien = function () {
+bw.sprites.createAlien = function (scene) {
 
     function getAlienSpriteKey() {
         let rnd = Math.random();
@@ -40,7 +40,9 @@ bw.sprites.createAlien = function () {
     
     let randomX = Math.random() * config.width;
     let spriteKey = getAlienSpriteKey();
-    let alien = bw.sprites.aliens.create(randomX, 0, spriteKey);
+    let alien = new Alien(scene, randomX, 0, spriteKey);
+    
+    bw.sprites.aliens.add(alien); //bw.sprites.aliens.create(randomX, 0, spriteKey);
 
     if (spriteKey === "alien_shield_sheet") {
         alien.play("sköld");
