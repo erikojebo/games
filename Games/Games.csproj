@@ -6,6 +6,37 @@
 
   <ItemGroup>
     <Folder Include="Models" />
+    <Folder Include="wwwroot\blobwars\js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\assets\alien1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\alien2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\alien2_300.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\alien2_med_sköld_large.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\alien2_med_sköld_large_2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\apocalypse.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\apocalypse_large.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\bilder\space_background.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\bomb.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\drake.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\dude.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\Ellasunicornsomhonmåladesjälv.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\explosion_sheet.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\explosion_sheet_large.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\fairy1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\fairy1_300.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\laser1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\platform.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\ship1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\ship1_300.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\sky.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\sounds\8-bit-laser.mp3" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\sounds\explosion.wav" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\sounds\explosion2.wav" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\space_background.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\space_background2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\star.png" />
   </ItemGroup>
 
 
