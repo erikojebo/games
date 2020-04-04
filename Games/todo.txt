@@ -27,3 +27,4 @@ Skriva om:
 Resurser:
 * https://www.html5gamedevs.com/topic/38994-phaser3-game-example-using-scenes-a-preloader-and-a-loading-bar/?tab=comments#comment-222636
 * http://labs.phaser.io/edit.html?src=src/game%20objects/group/sprite%20pool.js
+* https://phaser.io/examples/v3/view/game-objects/sprites/custom-sprite-class-es6

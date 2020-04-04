@@ -2,10 +2,8 @@
 
 bw.sprites.init = function (scene) {
 
-    let ship = scene.physics.add.sprite(140, 450, 'ship1');
-    ship.setCollideWorldBounds(true);
-    bw.sprites.ship = ship;
-
+    bw.sprites.ship = new Ship(scene, scene.sys.game.config.width / 2, scene.sys.game.config.height - 100);
+    
     bw.sprites.fairy = scene.physics.add.sprite(1150, 75, 'fairy');
 
     bw.sprites.aliens = scene.physics.add.group();
