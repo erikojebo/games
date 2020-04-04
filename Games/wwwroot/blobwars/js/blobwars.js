@@ -1,7 +1,4 @@
-﻿var cursors;
-var spaceKey;
-var justFired = false;
-var timeSinceLastEnemySpawn = 0;
+﻿var timeSinceLastEnemySpawn = 0;
 
 let config = bw.config.createConfig(create, update);
 
@@ -17,9 +14,6 @@ function create() {
     bw.sounds.init(this);
     bw.animations.create(this);
     bw.sprites.init(this);
-
-    cursors = this.input.keyboard.createCursorKeys();
-    spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.physics.add.overlap(bw.sprites.ship, bw.sprites.aliens, onShipAlienCollission, null, this);
     this.physics.add.overlap(bw.sprites.bullets, bw.sprites.aliens, onAlienHitByLaser, null, this);
@@ -55,10 +49,7 @@ function update() {
 }
 
 function onShipAlienCollission(ship, alien) {
-    
-    bw.sprites.explodeAt(ship.x, ship.y);
-    ship.disableBody(true, true);
-
+    ship.onHitByAlien();
     alien.onHitByShip();
 }
 

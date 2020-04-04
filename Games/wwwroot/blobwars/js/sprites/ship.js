@@ -46,6 +46,11 @@
             this.#justFired = false;
         }
     }
+    
+    onHitByAlien() {
+        bw.sprites.explodeAt(this.x, this.y);
+        this.disableBody(true, true);
+    }
 
     stopMovement(obj) {
         obj.setVelocityX(0);
