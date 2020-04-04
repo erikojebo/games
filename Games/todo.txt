@@ -5,14 +5,25 @@
 * KLART Chans för att fiende skapas med sköld
 * KLART Fixa versionshantering
 * KLART Lägg upp spelet på hemsidan
+* KLART Paus-knapp
 
 * Boss när man får 1000, 2000, 3000 osv poäng
 
 * Kunna styra med touch
 
-* Paus-knapp
 * Starta om-knapp
-
 
 * Städa bort explosionerna efter att animationen är klar
 * Lösa alla globala variabler bättre
+
+
+
+
+Skriva om:
+* Sätta parent-objektet
+* Play/pause
+* Animationer
+
+
+Resurser:
+* https://www.html5gamedevs.com/topic/38994-phaser3-game-example-using-scenes-a-preloader-and-a-loading-bar/?tab=comments#comment-222636

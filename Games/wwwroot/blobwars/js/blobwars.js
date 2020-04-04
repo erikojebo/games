@@ -57,6 +57,13 @@ playPauseButton.addEventListener("click", function () {
     }
 });
 
+let restartButton = document.getElementById("restart-button");
+
+restartButton.addEventListener("click", function () {
+   game.scene.stop("default"); 
+   game.scene.start("default"); 
+});
+
 function preload() {
     this.load.audio('laser_sound', [ 'assets/sounds/8-bit-laser.mp3' ]);
     this.load.audio('explosion_sound', [ 'assets/sounds/explosion2.wav' ]);
