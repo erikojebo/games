@@ -1,6 +1,5 @@
 ﻿var cursors;
 var spaceKey;
-var gameState = "running";
 var justFired = false;
 var timeSinceLastEnemySpawn = 0;
 
@@ -8,7 +7,6 @@ let config = bw.config.createConfig(create, update);
 
 var game = new Phaser.Game(config);
 var random = new Math.seedrandom();
-
 
 function create() {
 
@@ -25,13 +23,20 @@ function create() {
 
     this.physics.add.overlap(bw.sprites.ship, bw.sprites.aliens, onShipAlienCollission, null, this);
     this.physics.add.overlap(bw.sprites.bullets, bw.sprites.aliens, onAlienHitByLaser, null, this);
+
+    bw.state.isGameOver = false;
 }
 
 function update() {
 
+    if (bw.state.isGameOver) {
+        this.physics.pause();
+        return;
+    }
+    
     timeSinceLastEnemySpawn += 1;
 
-    var spawnTimeLimit = 120 - bw.hud.scoreBoard.score / 10; // 2 sekunder från start, minskar när poängen ökar
+    let spawnTimeLimit = 120 - bw.hud.scoreBoard.score / 10; // 2 sekunder från start, minskar när poängen ökar
 
     if (spawnTimeLimit < 20) {
         spawnTimeLimit = 20;
@@ -39,7 +44,7 @@ function update() {
 
     if (timeSinceLastEnemySpawn > spawnTimeLimit && Math.random() > 0.5) {
 
-        createAlien();
+        bw.sprites.createAlien();
 
         timeSinceLastEnemySpawn = 0;
     }
@@ -93,8 +98,8 @@ function stopMovement(obj) {
 }
 
 function onShipAlienCollission(ship, alien) {
-    explodeAt(alien.x, alien.y);
-    explodeAt(ship.x, ship.y);
+    bw.sprites.explodeAt(alien.x, alien.y);
+    bw.sprites.explodeAt(ship.x, ship.y);
 
     alien.disableBody(true, true);
     ship.disableBody(true, true);
@@ -120,40 +125,12 @@ function killAlien(alien) {
     alien.disableBody(true, true);
     
     bw.hud.scoreBoard.addScore(10);
-    
-    explodeAt(alien.x, alien.y);
+
+    bw.sprites.explodeAt(alien.x, alien.y);
     bw.sounds.explosion.play();
 }
 
 function gameOver() {
     bw.hud.gameOver();
-}
-
-function createAlien() {
-    let randomX = Math.random() * config.width;
-    var spriteKey = getAlienSpriteKey();
-    var alien = bw.sprites.aliens.create(randomX, 0, spriteKey);
-
-    if (spriteKey === "alien_shield_sheet") {
-        alien.play("sköld");
-    }
-}
-
-function getAlienSpriteKey() {
-    let rnd = Math.random();
-
-    if (rnd < 0.25) {
-        return "apocalypse";
-    }
-
-    if (rnd < 0.5) {
-        return "alien_shield_sheet";
-    }
-
-    return "alien";
-}
-
-function explodeAt(x, y) {
-    var exp = bw.sprites.explosions.create(x, y);
-    exp.play("explode");
+    bw.state.isGameOver = true;
 }

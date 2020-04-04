@@ -3,7 +3,7 @@
 bw.hud.gameMenu = {};
 bw.hud.scoreBoard = {};
 
-bw.hud.gameMenu.init = function (game) {
+bw.hud.gameMenu.init = function (game, scene) {
     let playPauseButton = document.getElementById("play-pause-button");
 
     playPauseButton.addEventListener("click", function () {
@@ -24,10 +24,6 @@ bw.hud.gameMenu.init = function (game) {
         game.scene.stop("default");
         game.scene.start("default");
     });
-
-    bw.hud.gameMenu.stop = function () {
-        game.scene.physics.pause();
-    };
 };
 
 bw.hud.scoreBoard.init = function (scene) {
@@ -45,11 +41,10 @@ bw.hud.scoreBoard.addScore = function (score) {
 };
 
 bw.hud.init = function (game, scene) {
-    bw.hud.gameMenu.init(game);
+    bw.hud.gameMenu.init(game, scene);
     bw.hud.scoreBoard.init(scene);
 };
 
 bw.hud.gameOver = function () {
-    bw.hud.scoreBoard.setText("GAME OVER! :'(     Score: " + score);
-    bw.hud.gameMenu.stop();
+    bw.hud.scoreBoard.setText("GAME OVER! :'(     Score: " + bw.hud.scoreBoard.score);
 };

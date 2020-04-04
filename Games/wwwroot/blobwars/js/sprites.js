@@ -18,3 +18,33 @@ bw.sprites.init = function (scene) {
         key: 'explosion_sheet'
     });
 };
+
+bw.sprites.explodeAt = function (x, y) {
+    let exp = bw.sprites.explosions.create(x, y);
+    exp.play("explode");
+};
+
+bw.sprites.createAlien = function () {
+
+    function getAlienSpriteKey() {
+        let rnd = Math.random();
+
+        if (rnd < 0.25) {
+            return "apocalypse";
+        }
+
+        if (rnd < 0.5) {
+            return "alien_shield_sheet";
+        }
+
+        return "alien";
+    }
+    
+    let randomX = Math.random() * config.width;
+    let spriteKey = getAlienSpriteKey();
+    let alien = bw.sprites.aliens.create(randomX, 0, spriteKey);
+
+    if (spriteKey === "alien_shield_sheet") {
+        alien.play("sköld");
+    }
+};
