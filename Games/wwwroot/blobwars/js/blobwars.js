@@ -49,7 +49,6 @@ function update() {
         timeSinceLastEnemySpawn = 0;
     }
 
-    let ship = bw.sprites.ship;
     let aliens = bw.sprites.aliens;
     let bullets = bw.sprites.bullets;
 
@@ -61,41 +60,9 @@ function update() {
             gameOver();
         }
     });
-
-    if (cursors.left.isDown) {
-        ship.setVelocityX(-400);
-
-        //ship.anims.play('left', true);
-    } else if (cursors.right.isDown) {
-        ship.setVelocityX(400);
-
-        //player.anims.play('right', true);
-    } else if (cursors.up.isDown) {
-        ship.setVelocityY(-330);
-
-    } else if (cursors.down.isDown) {
-        ship.setVelocityY(330);
-
-    } else {
-        stopMovement(ship);
-        //player.anims.play('turn');
-    }
-
-    if (spaceKey.isDown && !justFired) {
-        bullets.create(ship.x, ship.y - ship.height / 2, "bullet");
-        bw.sounds.laser.play();
-        justFired = true;
-    }
-
-    if (spaceKey.isUp) {
-        justFired = false;
-    }
 }
 
-function stopMovement(obj) {
-    obj.setVelocityX(0);
-    obj.setVelocityY(0);
-}
+
 
 function onShipAlienCollission(ship, alien) {
     bw.sprites.explodeAt(alien.x, alien.y);
