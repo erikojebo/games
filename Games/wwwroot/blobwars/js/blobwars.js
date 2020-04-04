@@ -165,8 +165,6 @@ function update() {
         createAlien();
 
         timeSinceLastEnemySpawn = 0;
-
-        //this.anims.play('explode', true);
     }
 
 

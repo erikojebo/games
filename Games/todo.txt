@@ -6,12 +6,11 @@
 * KLART Fixa versionshantering
 * KLART Lägg upp spelet på hemsidan
 * KLART Paus-knapp
+* KLART Starta om-knapp
 
 * Boss när man får 1000, 2000, 3000 osv poäng
 
 * Kunna styra med touch
-
-* Starta om-knapp
 
 * Städa bort explosionerna efter att animationen är klar
 * Lösa alla globala variabler bättre
