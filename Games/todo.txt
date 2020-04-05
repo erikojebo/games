@@ -13,9 +13,7 @@
 
 * Kunna styra med touch
 
-* Städa bort explosionerna efter att animationen är klar
-
-
+* Scene-klass
 * Kolla upp Phaser.Math.RND
 
 Skriva om:
