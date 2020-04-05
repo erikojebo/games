@@ -1,3 +1,4 @@
 ﻿bw.state = {};
 
-bw.state.isGameOver = false;
+bw.state.gameState = "playing";
+bw.state.score = 0;

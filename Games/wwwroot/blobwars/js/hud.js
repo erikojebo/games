@@ -27,17 +27,24 @@ bw.hud.gameMenu.init = function (game, scene) {
 };
 
 bw.hud.scoreBoard.init = function (scene) {
-    bw.hud.scoreBoard.text = scene.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#FFF'});
-    bw.hud.scoreBoard.score = 0;
+    bw.hud.scoreBoard.scoreText = scene.add.text(16, 16, '', {fontSize: '32px', fill: '#FFF'});
+    bw.hud.scoreBoard.gameOverText = scene.add.text(350, 300, '', {fontSize: '90px', fill: '#FFF'});
+
+    bw.state.score = 0;
+    bw.hud.scoreBoard.updateScore(0);
 };
 
 bw.hud.scoreBoard.setText = function (text) {
-    bw.hud.scoreBoard.text.setText(text);
+    bw.hud.scoreBoard.scoreText.setText(text);
 };
 
 bw.hud.scoreBoard.addScore = function (score) {
-    bw.hud.scoreBoard.score += 10;
-    bw.hud.scoreBoard.setText('Score: ' + bw.hud.scoreBoard.score);
+    bw.state.score += score;
+    bw.hud.scoreBoard.updateScore();
+};
+
+bw.hud.scoreBoard.updateScore = function () {
+    bw.hud.scoreBoard.setText('Score: ' + bw.state.score);
 };
 
 bw.hud.init = function (game, scene) {
@@ -46,5 +53,5 @@ bw.hud.init = function (game, scene) {
 };
 
 bw.hud.gameOver = function () {
-    bw.hud.scoreBoard.setText("GAME OVER! :'(     Score: " + bw.hud.scoreBoard.score);
+    bw.hud.scoreBoard.gameOverText.setText("GAME OVER!");
 };

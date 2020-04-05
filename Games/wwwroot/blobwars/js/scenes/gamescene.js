@@ -1,6 +1,7 @@
 ﻿class GameScene extends Phaser.Scene {
     
     #timeSinceLastEnemySpawn = 0;
+    #bossPointLimit = 50;
     
     constructor (config) {
         super(config);
@@ -47,7 +48,7 @@
     spawnAliens() {
         this.#timeSinceLastEnemySpawn += 1;
 
-        let spawnTimeLimit = 120 - bw.hud.scoreBoard.score / 10; // 2 sekunder från start, minskar när poängen ökar
+        let spawnTimeLimit = 120 - bw.state.score / 10; // 2 sekunder från start, minskar när poängen ökar
 
         if (spawnTimeLimit < 20) {
             spawnTimeLimit = 20;
