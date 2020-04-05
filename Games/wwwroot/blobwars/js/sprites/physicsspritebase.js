@@ -18,7 +18,9 @@
     explode() {
         this.disableBody(true, true);
         
-        new Explosion(this.scene, this.x, this.y);
+        let explosion = new Explosion(this.scene, this.x, this.y);
+        explosion.play("explode");
+
         bw.sounds.explosion.play();
     }
     

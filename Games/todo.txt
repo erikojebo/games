@@ -7,16 +7,16 @@
 * KLART Lägg upp spelet på hemsidan
 * KLART Paus-knapp
 * KLART Starta om-knapp
+* KLART Lösa alla globala variabler bättre
 
 * Boss när man får 1000, 2000, 3000 osv poäng
 
 * Kunna styra med touch
 
 * Städa bort explosionerna efter att animationen är klar
-* Lösa alla globala variabler bättre
 
 
-
+* Kolla upp Phaser.Math.RND
 
 Skriva om:
 * Sätta parent-objektet
