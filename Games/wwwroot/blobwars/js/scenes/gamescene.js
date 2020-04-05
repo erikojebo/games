@@ -41,6 +41,10 @@
             return;
         }
 
+        this.spawnAliens();        
+    }
+    
+    spawnAliens() {
         this.#timeSinceLastEnemySpawn += 1;
 
         let spawnTimeLimit = 120 - bw.hud.scoreBoard.score / 10; // 2 sekunder från start, minskar när poängen ökar
