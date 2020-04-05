@@ -42,10 +42,6 @@ function update() {
 
         timeSinceLastEnemySpawn = 0;
     }
-
-    let bullets = bw.sprites.bullets;
-
-    bullets.setVelocityY(-1000);
 }
 
 function onShipAlienCollission(ship, alien) {

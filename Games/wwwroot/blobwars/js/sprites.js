@@ -42,7 +42,7 @@ bw.sprites.createAlien = function (scene) {
     let spriteKey = getAlienSpriteKey();
     let alien = new Alien(scene, randomX, 0, spriteKey);
     
-    bw.sprites.aliens.add(alien); //bw.sprites.aliens.create(randomX, 0, spriteKey);
+    bw.sprites.aliens.add(alien);
 
     if (spriteKey === "alien_shield_sheet") {
         alien.play("sköld");

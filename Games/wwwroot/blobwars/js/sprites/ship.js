@@ -31,7 +31,10 @@
         }
 
         if (spaceKey.isDown && !this.#justFired) {
-            bw.sprites.bullets.create(this.x, this.y - this.height / 2, "bullet");
+            
+            let bullet = new Bullet(this.scene, this.x, this.y - this.height / 2, 'bullet');
+            bw.sprites.bullets.add(bullet);
+            
             bw.sounds.laser.play();
             this.#justFired = true;
         }
