@@ -8,13 +8,24 @@
 * KLART Paus-knapp
 * KLART Starta om-knapp
 * KLART Lösa alla globala variabler bättre
+* KLART Scene-klass
+* KLART Boss när man får 1000, 2000, 3000 osv poäng
+* KLART Snygga upp gameover-koden (duplicerad nu)
+* KLART Skala explosionen när bossen exploderar
+* KLART Bara explodera där det finns levande aliens när bossen kommer
 
-* Boss när man får 1000, 2000, 3000 osv poäng
+
+* Boss-skott (rakt nedåt)
+
+* Bättre vapen efter bossfight
+
 
 * Kunna styra med touch
 
-* Scene-klass
 * Kolla upp Phaser.Math.RND
+
+
+
 
 Skriva om:
 * Sätta parent-objektet
@@ -26,3 +37,14 @@ Resurser:
 * https://www.html5gamedevs.com/topic/38994-phaser3-game-example-using-scenes-a-preloader-and-a-loading-bar/?tab=comments#comment-222636
 * http://labs.phaser.io/edit.html?src=src/game%20objects/group/sprite%20pool.js
 * https://phaser.io/examples/v3/view/game-objects/sprites/custom-sprite-class-es6
+
+
+
+
+Iterate children:
+    // aliens är en group
+    aliens.children.iterate(function (alien) {
+        if (alien.y > config.height) {
+            gameOver();
+        }
+    });

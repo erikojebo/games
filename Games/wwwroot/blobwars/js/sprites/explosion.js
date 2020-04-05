@@ -1,8 +1,13 @@
 ﻿class Explosion extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y) {
+    constructor(scene, x, y, scale) {
         super(scene, x, y, 'explosion_sheet');
 
+        scale = scale || 1;
+        
         scene.add.existing(this);
+
+        this.displayWidth = this.width * scale;
+        this.displayHeight = this.height * scale;
     }
 
     preUpdate (time, delta)

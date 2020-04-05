@@ -21,13 +21,12 @@
     }
 
     gameOver() {
-        bw.hud.gameOver();
-        bw.state.isGameOver = true;
+        bw.state.gameOver();
     }
 
     onHitByLaser() {
 
-        bw.hud.scoreBoard.addScore(10);
+        bw.hud.scoreBoard.addScore(100);
 
         if (this.isPlayingAnimation('sköld')) {
             this.play("sköld_trasig");

@@ -1,7 +1,7 @@
 ﻿class GameScene extends Phaser.Scene {
     
     #timeSinceLastEnemySpawn = 0;
-    #bossPointLimit = 50;
+    #bossPointLimit = 1000;
     
     constructor (config) {
         super(config);
@@ -25,7 +25,6 @@
         let scene = this;
 
         bw.sprites.ship = new Ship(scene);
-        bw.sprites.fairy = scene.physics.add.sprite(1150, 75, 'fairy');
         bw.sprites.aliens = scene.physics.add.group();
         bw.sprites.bullets = scene.physics.add.group();
         bw.sprites.explosions = scene.add.group();
@@ -37,12 +36,39 @@
     }
     
     update(time, delta) {
-        if (bw.state.isGameOver) {
+        if (bw.state.gameState === "gameover") {
             this.physics.pause();
             return;
         }
 
-        this.spawnAliens();        
+        if (bw.state.score > 0 && 
+            bw.state.score % this.#bossPointLimit === 0 && 
+            bw.state.gameState !== "boss") {
+            
+            bw.state.gameState = "boss";
+
+            bw.sprites.aliens.children.iterate(function (alien) {
+                if (alien.active === true) {
+                    alien.explode();
+                }
+            });
+            
+            let fairyBoss = new FairyBoss(this);
+            
+            this.physics.add.overlap(bw.sprites.bullets, fairyBoss, function (boss, laser) {
+                laser.onHit();
+                boss.onHitByLaser();
+            }, null, this);
+            
+            this.physics.add.overlap(bw.sprites.ship, fairyBoss, function (ship, boss) {
+                ship.onHitByAlien(boss);
+                boss.onHitByShip();
+            }, null, this);
+        } 
+        
+        if (bw.state.gameState === "normal") {
+            this.spawnAliens();
+        }
     }
     
     spawnAliens() {

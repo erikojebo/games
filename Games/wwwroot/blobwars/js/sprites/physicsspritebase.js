@@ -15,10 +15,10 @@
         return this.scene.sys.game.config.height;
     }
 
-    explode() {
+    explode(scale) {
         this.disableBody(true, true);
         
-        let explosion = new Explosion(this.scene, this.x, this.y);
+        let explosion = new Explosion(this.scene, this.x, this.y, scale);
         explosion.play("explode");
 
         bw.sounds.explosion.play();
