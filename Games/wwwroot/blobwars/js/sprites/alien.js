@@ -1,8 +1,15 @@
 ﻿class Alien extends PhysicsSpriteBase {
 
-    constructor (scene, x, y, texture)
+    constructor (scene)
     {
-        super(scene, x, y, texture);
+        let randomX = Math.random() * scene.sys.game.config.width;
+        let spriteKey = Alien.getSpriteKey();
+        
+        super(scene, randomX, 0, spriteKey);
+
+        if (spriteKey === "alien_shield_sheet") {
+            this.play("sköld");
+        }
     }
 
     preUpdate() {
@@ -34,5 +41,19 @@
     onHitByShip() {
         this.explode();        
         this.gameOver();
+    }
+
+    static getSpriteKey() {
+        let rnd = Math.random();
+
+        if (rnd < 0.25) {
+            return "apocalypse";
+        }
+
+        if (rnd < 0.5) {
+            return "alien_shield_sheet";
+        }
+
+        return "alien";
     }
 }

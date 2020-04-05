@@ -38,7 +38,8 @@ function update() {
 
     if (timeSinceLastEnemySpawn > spawnTimeLimit && Math.random() > 0.5) {
 
-        bw.sprites.createAlien(this);
+        let alien = new Alien(this);
+        bw.sprites.aliens.add(alien);
 
         timeSinceLastEnemySpawn = 0;
     }
@@ -50,8 +51,6 @@ function onShipAlienCollission(ship, alien) {
 }
 
 function onAlienHitByLaser(laser, alien) {
-
     alien.onHitByLaser();
-
-    laser.disableBody(true, true);
+    laser.onHit();
 }

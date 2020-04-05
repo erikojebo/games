@@ -12,4 +12,7 @@
         }
     }
 
+    onHit() {
+        this.disableBody(true, true);
+    }
 }

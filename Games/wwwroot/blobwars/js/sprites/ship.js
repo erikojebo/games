@@ -4,8 +4,11 @@
     #spaceKey;
     #justFired = false;
     
-    constructor (scene, x, y)
+    constructor (scene)
     {
+        let x = scene.sys.game.config.width / 2;
+        let y = scene.sys.game.config.height - 100;
+        
         super(scene, x, y, 'ship1');
 
         this.setCollideWorldBounds(true);
