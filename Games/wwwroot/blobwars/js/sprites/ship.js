@@ -1,6 +1,5 @@
-﻿class Ship extends Phaser.Physics.Arcade.Sprite {
+﻿class Ship extends PhysicsSpriteBase {
 
-    #scene;
     #cursors;
     #spaceKey;
     #justFired = false;
@@ -8,11 +7,6 @@
     constructor (scene, x, y)
     {
         super(scene, x, y, 'ship1');
-
-        this.#scene = scene;
-        
-        scene.add.existing(this);
-        scene.physics.add.existing(this);
 
         this.setCollideWorldBounds(true);
 
@@ -33,7 +27,7 @@
         } else if (cursors.down.isDown) {
             this.setVelocityY(330);
         } else {
-            this.stopMovement(this);
+            this.stopMovement();
         }
 
         if (spaceKey.isDown && !this.#justFired) {
@@ -48,12 +42,7 @@
     }
     
     onHitByAlien() {
-        bw.sprites.explodeAt(this.x, this.y);
+        this.explode();
         this.disableBody(true, true);
-    }
-
-    stopMovement(obj) {
-        obj.setVelocityX(0);
-        obj.setVelocityY(0);
     }
 }

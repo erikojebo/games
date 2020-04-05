@@ -1,21 +1,14 @@
-﻿class Alien extends Phaser.Physics.Arcade.Sprite {
-
-    #scene;
+﻿class Alien extends PhysicsSpriteBase {
 
     constructor (scene, x, y, texture)
     {
         super(scene, x, y, texture);
-
-        this.#scene = scene;
-
-        scene.add.existing(this);
-        scene.physics.add.existing(this);
     }
 
     preUpdate() {
         this.setVelocityY(30);
         
-        if (this.y > this.#scene.sys.game.config.height) {
+        if (this.y > this.gameHeight) {
             this.gameOver();
         }
     }
@@ -26,9 +19,9 @@
     }
 
     onHitByLaser() {
-        if (this.anims.currentAnim != null && this.anims.currentAnim.key === 'sköld') {
+        if (this.isPlayingAnimation('sköld')) {
             this.play("sköld_trasig");
-        } else if (this.anims.currentAnim != null && this.anims.currentAnim.key === 'sköld_trasig') {
+        } else if (this.isPlayingAnimation('sköld_trasig')) {
             this.play("ingen_sköld");
         } else {
 
@@ -41,11 +34,5 @@
     onHitByShip() {
         this.explode();        
         this.gameOver();
-    }
-    
-    explode() {
-        this.disableBody(true, true);
-        bw.sprites.explodeAt(this.x, this.y);
-        bw.sounds.explosion.play();        
     }
 }
