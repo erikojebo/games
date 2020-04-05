@@ -26,14 +26,14 @@
     }
 
     onHitByLaser() {
+
+        bw.hud.scoreBoard.addScore(10);
+
         if (this.isPlayingAnimation('sköld')) {
             this.play("sköld_trasig");
         } else if (this.isPlayingAnimation('sköld_trasig')) {
             this.play("ingen_sköld");
         } else {
-
-            bw.hud.scoreBoard.addScore(10);
-
             this.explode();
         }
     }
