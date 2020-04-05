@@ -1,4 +1,6 @@
-﻿var timeSinceLastEnemySpawn = 0;
+﻿bw.sprites = {};
+
+var timeSinceLastEnemySpawn = 0;
 
 let config = bw.config.createConfig(create, update);
 
@@ -13,7 +15,14 @@ function create() {
     bw.hud.init(game, this);
     bw.sounds.init(this);
     bw.animations.create(this);
-    bw.sprites.init(this);
+
+    let scene = this;
+    
+    bw.sprites.ship = new Ship(scene);
+    bw.sprites.fairy = scene.physics.add.sprite(1150, 75, 'fairy');
+    bw.sprites.aliens = scene.physics.add.group();
+    bw.sprites.bullets = scene.physics.add.group();
+    bw.sprites.explosions = scene.add.group();
 
     this.physics.add.overlap(bw.sprites.ship, bw.sprites.aliens, onShipAlienCollission, null, this);
     this.physics.add.overlap(bw.sprites.bullets, bw.sprites.aliens, onAlienHitByLaser, null, this);
