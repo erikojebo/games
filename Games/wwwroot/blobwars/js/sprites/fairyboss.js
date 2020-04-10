@@ -1,12 +1,15 @@
 ﻿class FairyBoss extends PhysicsSpriteBase {
     
     #hitCount = 0;
+    #ticks = 0;
     
     constructor(scene) {
         super(scene, scene.sys.game.config.width / 2, 100, 'fairy');
     }
 
     preUpdate() {
+        
+        this.#ticks++;
         
         let speed = 50;
         
@@ -25,8 +28,22 @@
         } else {
             this.setVelocityY(speed);
         }
+        
+        if (this.#ticks % 100 === 0) {
+            this.fireBullet(-30);
+            this.fireBullet(30);
+        }
     }
 
+    fireBullet(offsetX) {
+        let bullet = new Bullet(this.scene, this.x + offsetX, this.y, 'fairy_bullet');
+
+        bullet.velocity = 100;
+        bullet.isEnemyBullet = true;
+
+        bw.sprites.bullets.add(bullet);
+    }
+    
     onHitByLaser() {
         
         this.#hitCount += 1;

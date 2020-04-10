@@ -26,7 +26,7 @@
 
     onHitByLaser() {
 
-        bw.hud.scoreBoard.addScore(100);
+        bw.hud.scoreBoard.addScore(10);
 
         if (this.isPlayingAnimation('sköld')) {
             this.play("sköld_trasig");

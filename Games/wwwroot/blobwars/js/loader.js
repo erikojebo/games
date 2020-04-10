@@ -6,6 +6,7 @@ bw.loader.preload = function (scene) {
 
     scene.load.image('fairy', 'assets/fairy1_300.png');
     scene.load.image('bullet', 'assets/laser1.png');
+    scene.load.image('fairy_bullet', 'assets/fairy_bullet.png');
     scene.load.image('alien', 'assets/alien1.png');
     scene.load.image('alien2', 'assets/alien2_300.png');
     scene.load.image('apocalypse', 'assets/apocalypse_large.png');

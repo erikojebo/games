@@ -30,6 +30,7 @@
         bw.sprites.explosions = scene.add.group();
 
         this.physics.add.overlap(bw.sprites.ship, bw.sprites.aliens, this.onShipAlienCollission, null, this);
+        this.physics.add.overlap(bw.sprites.ship, bw.sprites.bullets, this.onShipHitByBullet, null, this);
         this.physics.add.overlap(bw.sprites.bullets, bw.sprites.aliens, this.onAlienHitByLaser, null, this);
 
         bw.state.isGameOver = false;
@@ -56,8 +57,10 @@
             let fairyBoss = new FairyBoss(this);
             
             this.physics.add.overlap(bw.sprites.bullets, fairyBoss, function (boss, laser) {
-                laser.onHit();
-                boss.onHitByLaser();
+                if (!laser.isEnemyBullet) {
+                    laser.onHit();
+                    boss.onHitByLaser();
+                }
             }, null, this);
             
             this.physics.add.overlap(bw.sprites.ship, fairyBoss, function (ship, boss) {
@@ -89,6 +92,14 @@
         }
     }
 
+    onShipHitByBullet(ship, bullet) {
+        if (bullet.isEnemyBullet) {
+            bullet.onHit();
+            ship.onHitByAlien();
+            bw.state.gameOver();
+        }
+    }
+    
     onShipAlienCollission(ship, alien) {
         ship.onHitByAlien();
         alien.onHitByShip();
