@@ -2,7 +2,7 @@
 
     constructor (scene)
     {
-        let randomX = Math.random() * scene.sys.game.config.width;
+        let randomX = Phaser.Math.RND.between(0, scene.sys.game.config.width);
         let spriteKey = Alien.getSpriteKey();
         
         super(scene, randomX, 0, spriteKey);
@@ -43,13 +43,13 @@
     }
 
     static getSpriteKey() {
-        let rnd = Math.random();
+        let rnd = Phaser.Math.RND.between(0, 100);
 
-        if (rnd < 0.25) {
+        if (rnd < 25) {
             return "apocalypse";
         }
 
-        if (rnd < 0.5) {
+        if (rnd < 50) {
             return "alien_shield_sheet";
         }
 

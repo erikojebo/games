@@ -80,7 +80,7 @@
             spawnTimeLimit = 20;
         }
 
-        if (this.#timeSinceLastEnemySpawn > spawnTimeLimit && Math.random() > 0.5) {
+        if (this.#timeSinceLastEnemySpawn > spawnTimeLimit && Phaser.Math.RND.between(0, 100) > 50) {
 
             let alien = new Alien(this);
             bw.sprites.aliens.add(alien);

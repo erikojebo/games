@@ -18,4 +18,3 @@ let config = {
 };
 
 var game = new Phaser.Game(config);
-var random = new Math.seedrandom();

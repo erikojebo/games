@@ -13,17 +13,14 @@
 * KLART Snygga upp gameover-koden (duplicerad nu)
 * KLART Skala explosionen när bossen exploderar
 * KLART Bara explodera där det finns levande aliens när bossen kommer
-
+* KLART Kolla upp Phaser.Math.RND
 
 * Boss-skott (rakt nedåt)
+* Ljud för boss-skott
 
 * Bättre vapen efter bossfight
 
-
 * Kunna styra med touch
-
-* Kolla upp Phaser.Math.RND
-
 
 
 
